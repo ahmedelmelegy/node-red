@@ -1,0 +1,15 @@
+appName: node-red
+
+replicaCount: 1
+
+containerPort: 1880
+servicePort: 80
+imageName: nodered/node-red
+
+memoryRequest: "128Mi"
+cpuRequest: "250m"
+
+memoryLimit: "256Mi"
+cpuLimit: "500m"
+
+pvStorage: 1Gi

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName }}-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName }}
+    spec:
+      containers:
+      - name: {{ .Values.appName }}
+        image: {{ .Values.imageName }}
+        ports:
+        - containerPort: {{ .Values.containerPort }}
+        volumeMounts:
+        - name: my-volume
+          mountPath: /data
+        resources:
+          requests:
+            memory: {{ .Values.memoryRequest }}
+            cpu: {{ .Values.cpuRequest }}
+          limits:
+            memory: {{ .Values.memoryLimit }}
+            cpu: {{ .Values.cpuLimit }} 
+      volumes:
+      - name: my-volume
+        persistentVolumeClaim:
+          claimName: my-pvc
