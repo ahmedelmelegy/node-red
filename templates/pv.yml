@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.appName }}-pv
 spec:
   capacity:
-    storage: {{ .Values.pvStorage }]
+    storage: {{ .Values.pvStorage }}
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Delete
