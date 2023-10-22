@@ -12,10 +12,6 @@ spec:
       labels:
         app: node-red
     spec:
-      volumes:
-      - name: my-volume
-        persistentVolumeClaim:
-          claimName: my-pvc
       containers:
       - name: node-red
         image: nodered/node-red
@@ -24,3 +20,14 @@ spec:
         volumeMounts:
         - name: my-volume
           mountPath: /data
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+      volumes:
+      - name: my-volume
+        persistentVolumeClaim:
+          claimName: my-pvc
