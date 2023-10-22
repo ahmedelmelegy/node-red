@@ -6,7 +6,7 @@ spec:
   selector:
     app: node-red
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 1880
+    - protocol: TCP
+      port: 80
+      targetPort: 1880
   type: NodePort

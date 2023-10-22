@@ -12,8 +12,15 @@ spec:
       labels:
         app: node-red
     spec:
+      volumes:
+      - name: my-volume
+        persistentVolumeClaim:
+          claimName: my-pvc
       containers:
       - name: node-red
         image: nodered/node-red
         ports:
         - containerPort: 1880
+        volumeMounts:
+        - name: my-volume
+          mountPath: /data
